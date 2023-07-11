@@ -1,14 +1,18 @@
 import { useSelector } from 'react-redux'
 import { Outlet, Navigate } from 'react-router-dom'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 const RutaProtegida = () => {
 
   const { user } = useSelector((state) => state.auth)
   return (
     <>
 
-      <h1>Es una ruta protegida</h1>
+
+
+      <Header />
       {user.nombre ? <Outlet /> : <Navigate to='/' />}
-      <Outlet />
+      <Footer />
 
 
     </>
