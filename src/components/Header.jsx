@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
-
+import { checklogOuth } from '../store/slices/auth/thunks'
+import { useDispatch } from 'react-redux'
 const Header = () => {
+    const dispatch = useDispatch()
     return (
 
         <header className='py-10 bg-indigo-600'>
@@ -12,6 +14,7 @@ const Header = () => {
                     <Link to='/admin' className='text-white text-sm font-bold'>Perfil</Link>
                     <Link to='/admin' className='text-white text-sm font-bold'>Pacientes</Link>
                     <button type='buton'
+
                         className='text-white text-sm font-bold'>
                         Cerrar Sessión
                     </button>

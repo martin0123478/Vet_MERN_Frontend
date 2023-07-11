@@ -8,8 +8,6 @@ const RutaProtegida = () => {
   return (
     <>
 
-
-
       <Header />
       {user.nombre ? (
         <main className='container mx-auto mt-10'>

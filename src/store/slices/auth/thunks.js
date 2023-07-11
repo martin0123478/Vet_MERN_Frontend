@@ -1,6 +1,6 @@
 import axios from "axios";
 import clienteAxios from "../../../config/axios";
-import { onCheking, onLogin } from "./authSlice";
+import { onCheking, onLogin,onLogout } from "./authSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 export const startLogin = ({ email, password }) => {
 
@@ -65,3 +65,10 @@ export const checkAuth = () => {
     }
   };
 };
+
+export const checklogOuth= ()=>{
+  return (dispatch) =>{
+    localStorage.removeItem('token')
+    dispatch(onLogout())
+  }
+}
