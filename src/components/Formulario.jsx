@@ -1,6 +1,9 @@
 import { useState } from "react"
 import Alerta from "./Alerta"
+import { useDispatch, useSelector } from 'react-redux'
+import { strartRegisterPacient } from "../store/slices/pacients/thunks"
 const Formulario = () => {
+    const dispatch = useDispatch()
     const [nombre, setNombre] = useState('')
     const [propietario, setPropietario] = useState('')
 
@@ -18,6 +21,22 @@ const Formulario = () => {
             })
             return
         }
+        dispatch(strartRegisterPacient({ nombre, propietario, email, fecha, sintomas }))
+        setNombre('')
+        setPropietario('')
+        setEmail('')
+        setFecha('')
+        setSintomas('')
+
+        setAlerta({
+            msg: 'Guardado correctamente',
+            error: false
+        })
+
+        setTimeout(() => {
+            setAlerta({})
+        }, 3000);
+
     }
     const { msg } = alerta
     return (
