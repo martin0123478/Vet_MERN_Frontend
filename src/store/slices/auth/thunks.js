@@ -44,7 +44,7 @@ export const startRegister = ({ nombre, email, password }) => {
 };
 
 export const checkAuth = () => {
-  return async (dispatch) => {
+  return async dispatch => {
     const token = localStorage.getItem("token");
     if (!token) return;
     const config = {
@@ -67,8 +67,10 @@ export const checkAuth = () => {
 };
 
 export const checklogOuth= ()=>{
-  return (dispatch) =>{
+  return dispatch=>{
+
     localStorage.removeItem('token')
     dispatch(onLogout())
+    history.push('/')
   }
 }

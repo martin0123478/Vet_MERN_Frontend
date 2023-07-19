@@ -1,5 +1,5 @@
 import clienteAxios from "../../../config/axios";
-import { addPacient,getPacients } from "./pacientesSlice";
+import { addPacient,getPacients,deletePacients,editPacient } from "./pacientesSlice";
 
 export const strartRegisterPacient = (d) =>{
     return async(dispatch) =>{
@@ -39,7 +39,28 @@ export const startGetPacients = () =>{
         console.log(data)
       dispatch(getPacients(data))
         } catch (error) {
-            
+            console.log(error)
+        }
+    }
+}
+
+export const startEliminarPaciente = (id) =>{
+    return async(dispatch) =>{
+        try {
+           const token = localStorage.getItem("token");
+    if (!token) return;
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+     
+    }; 
+    const {data} = await clienteAxios.delete(`/pacientes/${id}`,config)
+    console.log(data)
+    dispatch(deletePacients(data))
+        } catch (error) {
+            console.log(error)
         }
     }
 }

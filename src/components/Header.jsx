@@ -15,7 +15,7 @@ const Header = () => {
                     <Link to='/admin' className='text-white text-sm font-bold'>Pacientes</Link>
                     <button type='buton'
 
-                        className='text-white text-sm font-bold'>
+                        className='text-white text-sm font-bold' onClick={dispatch(checklogOuth)}>
                         Cerrar Sessión
                     </button>
                 </nav>
